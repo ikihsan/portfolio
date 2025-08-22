@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="flex flex-wrap justify-center gap-8"
           >
-            {['About', 'Skills', 'Projects', 'Contact'].map((item, index) => (
+            {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}

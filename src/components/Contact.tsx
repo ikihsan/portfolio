@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import { Mail, Github, Instagram, MapPin, Phone, Send } from 'lucide-react'
+import { Mail, Github, Instagram, MapPin, Send } from 'lucide-react'
 
 interface FormData {
   name: string

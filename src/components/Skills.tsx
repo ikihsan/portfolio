@@ -10,10 +10,7 @@ import {
   GitBranch,
   Layers,
   Globe,
-  Shield,
-  Cpu,
-  Terminal,
-  Palette
+  Terminal
 } from 'lucide-react'
 
 interface Skill {

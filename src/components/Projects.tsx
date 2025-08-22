@@ -86,7 +86,7 @@ const Projects: React.FC = () => {
     }
   }
 
-  const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => (
+  const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project }) => (
     <motion.div
       variants={itemVariants}
       whileHover={{ y: -10 }}
