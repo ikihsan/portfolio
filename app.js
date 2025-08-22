@@ -1,4 +1,4 @@
-// Portfolio JavaScript - Interactive functionality
+g// Portfolio JavaScript - Interactive functionality
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality

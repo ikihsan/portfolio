@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a;
+    color: #f8fafc;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
+  }
+  
+  .glow-primary {
+    @apply shadow-lg shadow-primary-500/25;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent;
+  }
+  
+  .gradient-border {
+    @apply relative overflow-hidden rounded-lg;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-lg p-[1px] bg-gradient-to-r from-primary-500 via-cyan-500 to-blue-500;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: subtract;
+  }
+
+  /* Professional card hover effects */
+  .elegant-card {
+    @apply transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-primary-500/20;
+  }
+
+  /* Sophisticated button styles */
+  .elegant-button {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+
+  .elegant-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-primary-500/20 to-cyan-500/20 transform scale-x-0 transition-transform duration-300 origin-left;
+  }
+
+  .elegant-button:hover::before {
+    @apply scale-x-100;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #14b8a6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0d9488;
+}
+
+/* Loading animation */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Particle effects */
+.particle {
+  position: absolute;
+  background: #14b8a6;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Matrix rain effect */
+.matrix-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Custom animations */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #14b8a6;
+  }
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid #14b8a6;
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+/* Elegant glow effect - more classy and professional */
+.neon-glow {
+  text-shadow: 
+    0 0 10px rgba(20, 184, 166, 0.3),
+    0 0 20px rgba(20, 184, 166, 0.2),
+    0 0 30px rgba(20, 184, 166, 0.1);
+  filter: drop-shadow(0 0 8px rgba(20, 184, 166, 0.2));
+}
+
+/* Even more elegant and sophisticated glow */
+.elegant-glow {
+  text-shadow: 
+    0 0 15px rgba(20, 184, 166, 0.25),
+    0 0 25px rgba(6, 182, 212, 0.15),
+    0 0 35px rgba(59, 130, 246, 0.1);
+  filter: drop-shadow(0 2px 8px rgba(20, 184, 166, 0.15));
+}
+
+/* Holographic effect */
+.holographic {
+  background: linear-gradient(
+    45deg,
+    #14b8a6,
+    #06b6d4,
+    #3b82f6,
+    #8b5cf6,
+    #ec4899,
+    #f59e0b
+  );
+  background-size: 400% 400%;
+  animation: holographic 4s ease-in-out infinite;
+}
+
+@keyframes holographic {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
