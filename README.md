@@ -44,6 +44,23 @@ A stunning, modern portfolio website built with React, TypeScript, and cutting-e
    - **Personal Portfolio v2**
 5. **Contact**: Functional contact form with multiple contact methods
 
+## 🚀 Quick Deploy
+
+### Deploy to Vercel (Recommended)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ikihsan/portfolio)
+
+1. Click the deploy button above
+2. Connect your GitHub account
+3. Your portfolio will be deployed automatically
+4. Custom domain can be added in Vercel dashboard
+
+### Deploy to Netlify
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ikihsan/portfolio)
+
+1. Click the deploy button above
+2. Connect your GitHub account
+3. Site will be built and deployed automatically
+
 ## 🚀 Getting Started
 
 ### Prerequisites
