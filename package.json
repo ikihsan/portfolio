@@ -4,8 +4,10 @@
   "version": "2.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+  "dev": "vite",
+  "build": "tsc && vite build",
+  "native:prep": "npm run build && cd native && npx cap sync ios",
+  "native:open:ios": "cd native && npx cap open ios",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
