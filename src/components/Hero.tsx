@@ -45,9 +45,9 @@ const Hero: React.FC = () => {
   ]
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+  <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-16">
       {/* Animated background elements */}
-      <div className="absolute inset-0">
+  <div className="absolute inset-0 hidden md:block">
         {floatingElements.map((element, index) => {
           const IconComponent = element.icon
           return (
@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Main content */}
-      <motion.div
+  <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -89,22 +89,22 @@ const Hero: React.FC = () => {
         
         <motion.h1
           variants={itemVariants}
-          className="text-6xl md:text-8xl font-bold mb-6"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 sm:mb-6 leading-tight"
         >
           <span className="text-gradient elegant-glow">Ihsanul Hak</span>
         </motion.h1>
         
         <motion.div
           variants={itemVariants}
-          className="text-2xl md:text-3xl text-gray-300 mb-8 h-12"
+          className="text-base sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 leading-snug break-words"
         >
           <span className="typewriter font-mono">{text}</span>
-          <span className="animate-pulse">|</span>
+          <span className="animate-pulse inline-block">|</span>
         </motion.div>
         
         <motion.p
           variants={itemVariants}
-          className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
+          className="text-base md:text-lg text-gray-400 max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed px-1"
         >
           Passionate about building robust, scalable server-side applications with modern technologies. 
           I create innovative solutions that power the digital world, including AI-driven platforms like my 
@@ -114,7 +114,7 @@ const Hero: React.FC = () => {
         
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16"
         >
           <motion.a
             href="#projects"
@@ -136,7 +136,7 @@ const Hero: React.FC = () => {
           </motion.a>
         </motion.div>
         
-        <motion.div
+  <motion.div
           variants={itemVariants}
           className="flex justify-center"
         >
