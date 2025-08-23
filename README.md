@@ -153,3 +153,24 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ⭐ **Star this repository if you found it helpful!**
 
 Built with ❤️ by Ihsanul Hak IK
+
+## CI: Build iOS app with Codemagic
+
+This repository includes `codemagic.yaml` to build the iOS app (Capacitor wrapper) in the cloud and deliver a TestFlight build.
+
+Quick start
+- Ensure changes are pushed to GitHub (already configured).
+- In Codemagic, add the app from your GitHub repo and choose “Use codemagic.yaml”.
+- Add an environment group named `app_store_connect` with:
+   - APP_STORE_CONNECT_PRIVATE_KEY (contents of your .p8 ASC API key)
+   - APP_STORE_CONNECT_KEY_IDENTIFIER
+   - APP_STORE_CONNECT_ISSUER_ID
+- Start the workflow: “iOS • Capacitor • TestFlight”.
+
+What the pipeline does
+1) Uses Node 18, runs `npm ci` and `npm run native:prep` (builds web and syncs iOS)
+2) Runs CocoaPods in `native/ios`
+3) Builds an .ipa via Xcode using the App scheme and uploads to TestFlight
+
+Artifacts
+- The generated .ipa and logs are available in the workflow artifacts. TestFlight upload is automatic when credentials are set.

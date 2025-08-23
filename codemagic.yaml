@@ -1,0 +1,55 @@
+workflows:
+  ios_testflight:
+    name: iOS • Capacitor • TestFlight
+    max_build_duration: 60
+    instance_type: mac_mini_m1
+    environment:
+      xcode: 15.4
+      cocoapods: default
+      groups:
+        - app_store_connect
+      vars:
+        XCODE_WORKSPACE: "native/ios/App/App.xcworkspace"
+        XCODE_SCHEME: "App"
+        BUNDLE_ID: "com.ikihsan.portfolio"
+      cache:
+        cache_paths:
+          - ~/.npm
+          - ~/Library/Caches/CocoaPods
+          - native/ios/Pods
+    scripts:
+      - name: Set Node.js version
+        script: |
+          . "$NVM_DIR/nvm.sh" || true
+          nvm install 18
+          nvm use 18
+          node -v
+          npm -v
+      - name: Install web dependencies
+        script: npm ci
+      - name: Build web app and sync iOS (Capacitor)
+        script: npm run native:prep
+      - name: Install CocoaPods
+        script: |
+          cd native/ios
+          pod repo update
+          pod install
+      - name: Build IPA with Xcode
+        script: |
+          xcode-project build-ipa \
+            --workspace "$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME" \
+            --archive-flags="-destination 'generic/platform=iOS'" \
+            --verbose
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - ~/Library/Logs/gym/*.log
+      - $CM_EXPORT_DIR/**
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: true
+        beta_groups:
+          - Internal Testers
