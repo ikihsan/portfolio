@@ -21,6 +21,11 @@ Build steps
    - `npx cap open ios` (requires Xcode installed)
    - In Xcode: select a Team, update bundle ID if needed, then Run on a simulator or a connected iPhone.
 
+Android emulator (Windows/macOS/Linux)
+- Requirements: Android Studio (SDKs, emulator) installed
+- From project root: `npm run android:prep`
+- Open Android Studio and select `native/android`, then Run on an emulator or device. Or run `npm run android:open` and hit Run in Android Studio.
+
 Notes
 - On Windows you can prepare the iOS project, but the final signing/build must be performed on macOS with Xcode.
 - To update the app after web code changes, run `npm run build` again at the root, then `npx cap sync ios` inside `native/`.

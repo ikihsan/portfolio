@@ -5,16 +5,20 @@
   "description": "Native wrapper for Ikhsan Portfolio using Capacitor (iOS)",
   "license": "MIT",
   "scripts": {
-    "add:ios": "cap add ios",
-    "sync:ios": "cap sync ios",
-    "copy": "cap copy",
-    "open:ios": "cap open ios"
+  "add:ios": "cap add ios",
+  "sync:ios": "cap sync ios",
+  "add:android": "cap add android",
+  "sync:android": "cap sync android",
+  "copy": "cap copy",
+  "open:ios": "cap open ios",
+  "open:android": "cap open android"
   },
   "dependencies": {
     "@capacitor/core": "^6.1.2"
   },
   "devDependencies": {
     "@capacitor/cli": "^6.1.2",
-    "@capacitor/ios": "^6.1.2"
+  "@capacitor/ios": "^6.1.2",
+  "@capacitor/android": "^6.1.2"
   }
 }
