@@ -95,11 +95,11 @@ export default function Footer(){
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-black/90 border border-red-500 rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto"
+              className="bg-black/90 border border-neon rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold text-red-400">PRIVACY SCAN</h3>
+                <h3 className="text-xl font-bold text-neon">PRIVACY SCAN</h3>
                 <button onClick={() => setPrivacyOpen(false)} className="text-gray-400 hover:text-white">✕</button>
               </div>
 
@@ -120,11 +120,6 @@ export default function Footer(){
 
               {userData && !loading && (
                 <div className="space-y-4">
-                  <div className="text-red-300">
-                    <p className="mb-2">⚠ ALERT: Your browser shares this data automatically. No privacy without control.</p>
-                    <p>If you knew what browsers capture, you'd build your own and stay detached. This is just the surface...</p>
-                  </div>
-
                   <div className="bg-black/50 p-4 rounded border border-gray-600">
                     <h4 className="text-neon font-bold mb-2">IP & Network Info:</h4>
                     <div className="space-y-1 text-sm">

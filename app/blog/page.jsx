@@ -2,18 +2,45 @@
 "use client"
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
 
 export default function Blog() {
-  const [stage, setStage] = useState('loading') // loading, error, reveal
+  const [stage, setStage] = useState('loading') // loading, blogs
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setStage('error'), 3500) // 3s loading
-    const timer2 = setTimeout(() => setStage('reveal'), 8000) // 5s error
-    return () => { clearTimeout(timer1); clearTimeout(timer2) }
+    const timer = setTimeout(() => setStage('blogs'), 3500) // 3.5s loading
+    return () => clearTimeout(timer)
   }, [])
 
+  const blogs = [
+    {
+      id: 1,
+      title: "Building Scalable APIs with NestJS and GraphQL",
+      excerpt: "Exploring the power of type-safe APIs and efficient data fetching...",
+      date: "2024-11-15",
+      readTime: "5 min read",
+      tags: ["NestJS", "GraphQL", "Backend"]
+    },
+    {
+      id: 2,
+      title: "Optimizing Database Queries in Prisma",
+      excerpt: "Best practices for efficient database operations and performance tuning...",
+      date: "2024-10-28",
+      readTime: "7 min read",
+      tags: ["Prisma", "PostgreSQL", "Performance"]
+    },
+    {
+      id: 3,
+      title: "Real-time Communication with WebSockets",
+      excerpt: "Implementing live chat and notifications in modern web applications...",
+      date: "2024-10-10",
+      readTime: "6 min read",
+      tags: ["WebSockets", "Real-time", "Node.js"]
+    }
+  ]
+
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 py-20">
+    <section className={`min-h-screen px-6 ${stage === 'loading' ? 'flex items-center justify-center' : 'py-20 flex justify-center'}`}>
       <div className="max-w-4xl w-full">
         <AnimatePresence mode="wait">
           {stage === 'loading' && (
@@ -40,53 +67,48 @@ export default function Blog() {
             </motion.div>
           )}
 
-          {stage === 'error' && (
+          {stage === 'blogs' && (
             <motion.div
-              key="error"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="text-center"
-            >
-              <div className="bg-red-900/20 border border-red-500 rounded-lg p-8 font-mono text-sm">
-                <div className="text-red-400 mb-4 text-2xl font-bold">SYSTEM ERROR</div>
-                <div className="text-red-300">Error 404: Blog fetch failed</div>
-                <div className="text-red-300">Connection to blog server compromised</div>
-                <div className="text-red-300">Firewall breached. Data encrypted.</div>
-                <div className="text-red-300 mt-4">Hacker detected. Initiating countermeasures...</div>
-                <motion.div
-                  animate={{ x: [-10, 10, -10] }}
-                  transition={{ repeat: Infinity, duration: 0.5 }}
-                  className="mt-4 text-red-500 text-xl"
-                >
-                  ⚠ ALERT ⚠
-                </motion.div>
-              </div>
-            </motion.div>
-          )}
-
-          {stage === 'reveal' && (
-            <motion.div
-              key="reveal"
+              key="blogs"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-center"
+              className="max-w-3xl mx-auto"
             >
-              <div className="bg-black/40 border border-neon rounded-lg p-8">
-                <div className="text-4xl mb-4">😈</div>
-                <h2 className="text-2xl font-bold text-neon mb-4">Gotcha!</h2>
-                <p className="text-gray-300 mb-6">
-                  Just a little hacker humor. Blogs are coming soon—I'm busy building epic backends and fooling systems like this one.
-                </p>
-                <p className="text-gray-400 text-sm">
-                  In the meantime, check out my <a href="/work" className="text-neon hover:underline">work</a> or <a href="/contact" className="text-neon hover:underline">drop a line</a>.
-                </p>
-                <button
-                  onClick={() => setStage('loading')}
-                  className="mt-6 px-4 py-2 bg-neon/10 text-neon border border-neon/20 rounded hover:bg-neon/20"
-                >
-                  Retry Hack
-                </button>
+              <div className="text-center mb-12">
+                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Blog</h1>
+                <p className="text-gray-400 text-lg">Thoughts on code, backend wizardry, and developer life</p>
+              </div>
+
+              <div className="space-y-8">
+                {blogs.map((blog, index) => (
+                  <motion.article
+                    key={blog.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.2 }}
+                    className="bg-black/40 border border-white/10 rounded-lg p-6 hover:border-neon/30 transition-colors"
+                  >
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {blog.tags.map(tag => (
+                        <span key={tag} className="px-2 py-1 bg-neon/10 text-neon text-xs rounded">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h2 className="text-xl font-bold text-white mb-2 hover:text-neon transition-colors cursor-pointer">
+                      {blog.title}
+                    </h2>
+                    <p className="text-gray-300 mb-4">{blog.excerpt}</p>
+                    <div className="flex items-center justify-between text-sm text-gray-400">
+                      <span>{blog.date}</span>
+                      <span>{blog.readTime}</span>
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
+
+              <div className="text-center mt-12">
+                <p className="text-gray-400">More posts coming soon... Stay tuned!</p>
               </div>
             </motion.div>
           )}
