@@ -109,7 +109,8 @@ export default function Home() {
   }
 
   return (
-    <section className="min-h-[80vh] flex items-center justify-center px-6 pt-20">
+    <>
+      <section className="min-h-[80vh] flex items-center justify-center px-6 pt-20">
       <div className="max-w-5xl w-full text-center">
         <motion.h1
           initial={{ opacity: 0, y: 8 }}
@@ -152,6 +153,7 @@ export default function Home() {
             )}
             <div className="mt-4 text-gray-400 font-mono text-xs border-t border-white/10 pt-2">
               <div className="text-neon/80 mb-1">Terminal Commands:</div>
+              <div> </div>
               <div>• exec [js code] → Execute JavaScript (Shift+Enter for multi-line)</div>
               <div>• trivia → Random quiz with options</div>
               <div>• joke → Fetch a dad joke</div>
@@ -167,5 +169,64 @@ export default function Home() {
         </div>
       </div>
     </section>
+
+    {/* Skills Section - Git Log Style */}
+    <section className="mt-20 px-6 pb-20">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
+      >
+        Skill Evolution
+      </motion.h2>
+
+      <div className="max-w-4xl mx-auto">
+        <div className="bg-black/40 border border-white/6 rounded-lg p-6 font-mono text-sm text-gray-300">
+          <div className="text-neon/80 mb-4">$ git log --oneline --grep="skill"</div>
+          {[
+            { hash: 'a1b2c3d', date: '2021-03-15', skill: 'JavaScript/TypeScript Mastery', desc: 'Built dynamic web apps with ES6+ features' },
+            { hash: 'i7j8k9l', date: '2022-01-10', skill: 'Node.js Proficiency', desc: 'Created scalable backend APIs and microservices' },
+            { hash: 'e4f5g6h', date: '2021-07-22', skill: 'React & Next.js Expertise', desc: 'Developed interactive UIs with hooks and state management' },
+            { hash: 'n1o2p3q', date: '2021-11-30', skill: 'NestJS & GraphQL Implementation', desc: 'Built robust server-side applications with type-safe APIs' },
+            { hash: 'm0n1o2p', date: '2022-05-18', skill: 'Firebase', desc: 'Implemented real-time databases and authentication' },
+            { hash: 'q3r4s5t', date: '2022-09-05', skill: 'Prisma & Postgres', desc: 'Designed efficient database schemas and optimized queries' },
+            { hash: 'u6v7w8x', date: '2023-02-28', skill: 'DevOps', desc: 'Automated deployments and monitoring' },
+            { hash: 'y9z0a1b', date: '2023-08-14', skill: 'API Design', desc: 'Crafted RESTful APIs and WebSockets for real-time communication' },
+            { hash: 'c2d3e4f', date: '2024-01-20', skill: 'DevRel Advocacy', desc: 'Shared knowledge through blogs and community events' },
+            { hash: 'g5h6i7j', date: '2024-06-30', skill: 'Full-Stack Integration', desc: 'Seamlessly connected frontends to backends' },
+            { hash: 'k8l9m0n', date: '2025-11-19', skill: 'Continuous Learning', desc: 'Exploring AI, cloud, and emerging tech' }
+          ].map((commit, i) => (
+            <motion.div
+              key={commit.hash}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.2, duration: 0.6 }}
+              className="mb-4 pb-4 border-b border-white/10 last:border-b-0"
+            >
+              <div className="flex items-start gap-4">
+                <div className="text-neon flex-shrink-0">commit {commit.hash}</div>
+                <div className="flex-1">
+                  <div className="text-white font-semibold">{commit.skill}</div>
+                  <div className="text-gray-400 text-xs">Date: {commit.date}</div>
+                  <div className="text-gray-200 mt-1">{commit.desc}</div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 2, duration: 1 }}
+            className="mt-6 text-center text-neon/60"
+          >
+            $ git status<br/>
+            On branch master<br/>
+            Skills up to date. Ready to deploy more awesomeness!
+          </motion.div>
+        </div>
+      </div>
+    </section>
+    </>
   )
 }

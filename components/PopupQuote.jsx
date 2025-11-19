@@ -26,9 +26,7 @@ export default function PopupQuote(){
     setQuoteIndex(Math.floor(Math.random() * QUOTES.length))
     setVisible(true)
 
-    // auto-dismiss after 4.5s
-    const timer = setTimeout(() => handleClose('auto'), 4500)
-    return () => { clearTimeout(timer); mountedRef.current = false }
+    // No auto-dismiss; only closes on manual close
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
