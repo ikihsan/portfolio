@@ -33,6 +33,7 @@ export default function RootLayout({ children }) {
         <main className="relative z-20">
           <PopupQuote />
           {children}
+          <Analytics />
         </main>
         <Footer />
       </body>
