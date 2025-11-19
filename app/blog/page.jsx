@@ -8,7 +8,7 @@ export default function Blog() {
   const [stage, setStage] = useState('loading') // loading, blogs
 
   useEffect(() => {
-    const timer = setTimeout(() => setStage('blogs'), 3500) // 3.5s loading
+    const timer = setTimeout(() => setStage('blogs'), 2000) // 3.5s loading
     return () => clearTimeout(timer)
   }, [])
 
@@ -40,7 +40,7 @@ export default function Blog() {
   ]
 
   return (
-    <section className={`min-h-screen px-6 ${stage === 'loading' ? 'flex items-center justify-center' : 'py-20 flex justify-center'}`}>
+    <section className="min-h-screen px-6 flex justify-center items-start py-20">
       <div className="max-w-4xl w-full">
         <AnimatePresence mode="wait">
           {stage === 'loading' && (
@@ -48,10 +48,10 @@ export default function Blog() {
               key="loading"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="text-center"
+              exit={{ opacity: 0, transition: { duration: 0.5 } }}
+              className="flex items-center justify-center min-h-screen w-full text-center"
             >
-              <div className="bg-black/40 border border-white/10 rounded-lg p-8 font-mono text-sm">
+              <div className="bg-black/40 border border-white/10 rounded-lg p-8 font-mono text-sm w-full">
                 <div className="text-neon mb-4">$ fetch blogs --latest</div>
                 <div className="text-gray-300">Initializing blog matrix...</div>
                 <div className="text-gray-300">Connecting to database...</div>
@@ -66,12 +66,13 @@ export default function Blog() {
               </div>
             </motion.div>
           )}
-
+         
           {stage === 'blogs' && (
             <motion.div
               key="blogs"
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0,  }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="max-w-3xl mx-auto"
             >
               <div className="text-center mb-12">
