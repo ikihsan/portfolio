@@ -227,6 +227,10 @@ export default function Home() {
         </div>
       </div>
     </section>
+
+    <div className="text-center text-gray-400 text-sm mt-8 pb-8">
+      P.S. Curious about your data? Check the footer.
+    </div>
     </>
   )
 }

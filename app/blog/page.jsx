@@ -7,8 +7,8 @@ export default function Blog() {
   const [stage, setStage] = useState('loading') // loading, error, reveal
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setStage('error'), 4000) // 3s loading
-    const timer2 = setTimeout(() => setStage('reveal'), 9000) // 5s error
+    const timer1 = setTimeout(() => setStage('error'), 3500) // 3s loading
+    const timer2 = setTimeout(() => setStage('reveal'), 8000) // 5s error
     return () => { clearTimeout(timer1); clearTimeout(timer2) }
   }, [])
 
