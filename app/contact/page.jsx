@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 export default function Contact() {
   const [input, setInput] = useState('')
-  const [output, setOutput] = useState(['Welcome to Contact Debug Console. Required fields: name, email, message. Type "help" for commands.'])
+  const [output, setOutput] = useState(['Welcome to Contact Console. Required fields: name, email, message. Type "help" for commands.'])
   const [contactData, setContactData] = useState({ name: '', email: '', message: '', subject: '', method: '', skill: '' })
   const [isSending, setIsSending] = useState(false)
 
@@ -20,7 +20,9 @@ export default function Contact() {
       if (field === 'email') {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
         if (!emailRegex.test(value)) {
-          response = 'Invalid email format. Please enter a valid email.'
+          response = 'Warning: Please enter a proper email.'
+          setOutput(prev => [...prev, `$ ${cmd}`, response])
+          setInput('')
           return
         }
       }
@@ -31,7 +33,7 @@ export default function Contact() {
         response = 'Invalid field. Use: name, email, message, subject, method, skill'
       }
     } else if (command === 'help') {
-      response = 'Commands: set [field] [value] (required: name, email, message), send, clear, help'
+      response = 'Commands: set [field] [value] (required: name, email, message), send, clear, help \n eg: set name John \n set email john@mail.com \n set message Hello there! \n use command send to submit.' 
     } else if (command === 'clear') {
       setOutput(['Console cleared.'])
       return
@@ -91,15 +93,15 @@ export default function Contact() {
         animate={{ opacity: 1, y: 0 }}
         className="text-4xl md:text-6xl font-bold text-center text-white mb-8"
       >
-        Contact Debug Console
+        Contact Console
       </motion.h1>
 
       <div className="w-full max-w-4xl">
         <div className="bg-black/40 border border-white/6 rounded-lg p-6 font-mono text-sm">
           <div className="text-gray-300 mb-4 h-64 overflow-y-auto">
             {output.map((line, i) => (
-              <div key={i} className={line.startsWith('$') ? 'text-neon' : 'text-gray-200'}>
-                {line}
+              <div key={i} className={line.startsWith('$') ? 'text-neon' : line.includes('Warning:') ? 'text-yellow-400' : 'text-gray-200'}>
+                {line.split('\n').map((part, j) => <div key={j}>{part}</div>)}
               </div>
             ))}
           </div>
