@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 // Header: responsive header with logo, nav links and social icons.
 export default function Header(){
@@ -15,7 +16,7 @@ export default function Header(){
   ]
 
   return (
-    <header className="fixed z-30 top-0 left-0 right-0 backdrop-blur-sm bg-black/30 border-b border-white/6">
+    <header className="fixed z-30 top-0 left-0 right-0 backdrop-blur-md bg-black/50 border-b border-white/6">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-3">
@@ -46,34 +47,33 @@ export default function Header(){
         </nav>
 
         <div className="md:hidden">
-          <button aria-label="Open menu" onClick={() => setOpen(true)} className="p-2">
+          <button aria-label="Toggle menu" onClick={() => setOpen(!open)} className="p-2">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#fff" strokeWidth="1.2" strokeLinecap="round"/></svg>
           </button>
         </div>
       </div>
 
       {/* Mobile overlay menu */}
-      {open && (
-        <div className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm">
-          <div className="p-6">
-            <div className="flex items-center justify-between">
-              <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-3">
-                <img src="/logo.svg" alt="Logo" className="w-9 h-9" />
-                <span className="font-semibold">ikihsan.me</span>
-              </Link>
-              <button aria-label="Close menu" onClick={() => setOpen(false)} className="p-2">✕</button>
-            </div>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-16 left-8 right-8 z-40 bg-black/90 rounded-lg p-6 shadow-lg"
+          >
 
-            <nav className="mt-6 flex flex-col gap-4">
+            <nav className="flex flex-col gap-4">
               {nav.map(item => (
-                <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="text-lg">
+                <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="text-lg py-2 border-b border-white/10">
                   {item.label}
                 </Link>
               ))}
             </nav>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
