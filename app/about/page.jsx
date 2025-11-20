@@ -72,6 +72,37 @@ export default function About() {
           <div className="text-neon">{'}'}</div>
         </motion.div>
 
+        {/* Resume Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="bg-black/40 border border-white/10 rounded-lg p-8 text-center mb-12"
+        >
+          <div className="mb-4">
+            <div className="text-3xl mb-2">📄</div>
+            <h3 className="text-xl font-bold text-neon mb-2">Resume</h3>
+            <p className="text-gray-300 text-sm">Dive deeper into my experience and skills</p>
+          </div>
+          <div className="flex gap-4 justify-center">
+            <a
+              href="/files/ihsan_ik.pdf"
+              download="Ihsanul_Hak_IK_Resume.pdf"
+              className="px-6 py-3 bg-neon/10 text-neon border border-neon/20 rounded-lg hover:bg-neon/20 transition font-medium"
+            >
+              ↓ Download Resume
+            </a>
+            <a
+              href="/files/ihsan_ik.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-white/10 text-white border border-white/20 rounded-lg hover:bg-white/20 transition font-medium"
+            >
+              👁 View Resume
+            </a>
+          </div>
+        </motion.div>
+
         {/* Stats Grid */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -81,7 +112,7 @@ export default function About() {
         >
           {[
             { label: 'Git Commits', value: '2000+' },
-            { label: 'APIs Built', value: '15+' },
+            { label: 'Pull Requests Merged', value: '150+' },
             { label: 'Bugs Squashed', value: '500+' },
             { label: 'Coffees Brewed', value: '1000+' }
           ].map((stat, i) => (
