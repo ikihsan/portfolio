@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-
 export default function Blog() {
   const [stage, setStage] = useState('loading') // loading, blogs
 

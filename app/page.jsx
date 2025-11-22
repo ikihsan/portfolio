@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
-
 // Home page — minimal hero with rotating roles and CTAs.
 export default function Home() {
   const roles = ['Backend Developer', 'API Builder', 'Prisma / Postgres', 'Full-stack Engineer', 'DevRel Enthusiast']

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ikihsan.me
+
+# Sitemaps
+Sitemap: https://ikihsan.me/sitemap.xml
