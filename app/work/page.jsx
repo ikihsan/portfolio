@@ -4,8 +4,19 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 const projects = [
-  {
+    {
     id: 1,
+    title: 'TripInsta',
+    description: 'A fully customizable admin-managed Tours, Packages & Resort management platform. Admins can add packages, resorts, track enquiries, monitor visitor analytics, and manage bookings seamlessly.',
+    tech: ['Next.js', 'Convex (BaaS)', 'Cloudinary'],
+    live: 'https://tripinsta.in',
+    image: '/proj3.png',
+    features: ['Admin Dashboard', 'Package & Resort Management', 'Enquiry Tracking', 'Visitor Analytics']
+  }
+  ,
+  {
+
+    id: 2,
     title: 'Secure Terminal - Private ChatApp',
     description: 'A highly private chat app with end-to-end encryption. Messages are secure, media is temporarily stored, and connections require mutual handshake. Built for ultimate privacy.',
     tech: ['Next.js', 'Convex (BaaS)', 'End-to-End Encryption'],
@@ -15,7 +26,7 @@ const projects = [
     features: ['E2E Encrypted', 'Mutual Handshake', 'Temporary Media Storage']
   },
   {
-    id: 2,
+    id: 3,
     title: 'AI Mock Interview Web App',
     description: 'Prepare for interviews with AI-powered mock sessions. Customize by tech stack, experience level, and topics. Get personalized feedback and practice.',
     tech: ['Next.js', 'Node.js', 'Express', 'MongoDB', 'Gemini API'],
@@ -23,6 +34,7 @@ const projects = [
     image: '/proj2.png',
     features: ['Customizable Topics', 'AI Feedback', 'Tech Stack Focus']
   }
+
 ]
 
 export default function Work() {
