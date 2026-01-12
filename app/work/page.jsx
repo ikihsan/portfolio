@@ -4,29 +4,45 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 const projects = [
-    {
+  {
     id: 1,
+    title: 'CozyWood',
+    description: 'A premium handcrafted furniture e-commerce platform. Features shop browsing, custom orders, user authentication, and a beautiful UI showcasing sustainable wood furniture.',
+    tech: ['Next.js', 'React', 'Firebase Auth', 'Firebase Backend', 'Tailwind CSS'],
+    live: 'https://cozywood.co.in',
+    image: '/proj4.png',
+    features: ['User Authentication', 'Custom Orders', 'Shop & Categories', 'Responsive Design']
+  },
+  {
+    id: 2,
+    title: 'IKIHSAN - Digital Architect',
+    description: 'My personalized tech portfolio featuring an interactive orbital navigation system. A space-themed interface showcasing projects as orbiting nodes with dynamic animations.',
+    tech: ['Next.js', 'React', 'Framer Motion', 'CSS Animations'],
+    live: 'https://ikihsan.tech',
+    image: '/proj5.png',
+    features: ['Interactive Orbital UI', 'Project Showcase', 'Dynamic Animations', 'Mood Updates']
+  },
+  {
+    id: 3,
     title: 'TripInsta',
     description: 'A fully customizable admin-managed Tours, Packages & Resort management platform. Admins can add packages, resorts, track enquiries, monitor visitor analytics, and manage bookings seamlessly.',
     tech: ['Next.js', 'Convex (BaaS)', 'Cloudinary'],
     live: 'https://tripinsta.in',
     image: '/proj3.png',
     features: ['Admin Dashboard', 'Package & Resort Management', 'Enquiry Tracking', 'Visitor Analytics']
-  }
-  ,
+  },
   {
-
-    id: 2,
+    id: 4,
     title: 'Secure Terminal - Private ChatApp',
     description: 'A highly private chat app with end-to-end encryption. Messages are secure, media is temporarily stored, and connections require mutual handshake. Built for ultimate privacy.',
     tech: ['Next.js', 'Convex (BaaS)', 'End-to-End Encryption'],
-    live: 'https://www.ikihsan.tech',
+    live: 'https://chat.ikihsan.tech',
     github: 'https://github.com/ikihsan/SecureTerminal-PrivateChatApp.git',
     image: '/proj1.png',
     features: ['E2E Encrypted', 'Mutual Handshake', 'Temporary Media Storage']
   },
   {
-    id: 3,
+    id: 5,
     title: 'AI Mock Interview Web App',
     description: 'Prepare for interviews with AI-powered mock sessions. Customize by tech stack, experience level, and topics. Get personalized feedback and practice.',
     tech: ['Next.js', 'Node.js', 'Express', 'MongoDB', 'Gemini API'],
@@ -34,7 +50,6 @@ const projects = [
     image: '/proj2.png',
     features: ['Customizable Topics', 'AI Feedback', 'Tech Stack Focus']
   }
-
 ]
 
 export default function Work() {
