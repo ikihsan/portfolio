@@ -13,16 +13,7 @@ const projects = [
     image: '/proj4.png',
     features: ['User Authentication', 'Custom Orders', 'Shop & Categories', 'Responsive Design']
   },
-  {
-    id: 5,
-    title: 'IKIHSAN - Digital Architect',
-    description: 'My personalized tech portfolio featuring an interactive orbital navigation system. A space-themed interface showcasing projects as orbiting nodes with dynamic animations.',
-    tech: ['Next.js', 'React', 'Framer Motion', 'CSS Animations'],
-    live: 'https://ikihsan.tech',
-    image: '/proj5.png',
-    features: ['Interactive Orbital UI', 'Project Showcase', 'Dynamic Animations', 'Mood Updates']
-  },
-  {
+    {
     id: 2,
     title: 'TripInsta',
     description: 'A fully customizable admin-managed Tours, Packages & Resort management platform. Admins can add packages, resorts, track enquiries, monitor visitor analytics, and manage bookings seamlessly.',
@@ -31,6 +22,7 @@ const projects = [
     image: '/proj3.png',
     features: ['Admin Dashboard', 'Package & Resort Management', 'Enquiry Tracking', 'Visitor Analytics']
   },
+  
   {
     id: 3,
     title: 'Secure Terminal - Private ChatApp',
@@ -41,6 +33,7 @@ const projects = [
     image: '/proj1.png',
     features: ['E2E Encrypted', 'Mutual Handshake', 'Temporary Media Storage']
   },
+  
   {
     id: 4,
     title: 'AI Mock Interview Web App',
@@ -49,7 +42,17 @@ const projects = [
     github: 'https://github.com/ikihsan/Mock_interview.git',
     image: '/proj2.png',
     features: ['Customizable Topics', 'AI Feedback', 'Tech Stack Focus']
-  }
+  },
+  {
+    id: 5,
+    title: 'IKIHSAN - Digital Architect',
+    description: 'My personalized tech portfolio featuring an interactive orbital navigation system. A space-themed interface showcasing projects as orbiting nodes with dynamic animations.',
+    tech: ['Next.js', 'React', 'Framer Motion', 'CSS Animations'],
+    live: 'https://ikihsan.tech',
+    image: '/proj5.png',
+    features: ['Interactive Orbital UI', 'Project Showcase', 'Dynamic Animations', 'Mood Updates']
+  },
+
 ]
 
 export default function Work() {
