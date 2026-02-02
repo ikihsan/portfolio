@@ -10,6 +10,7 @@ export default function Header(){
   const nav = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
+    { href: '/ideas', label: 'Ideas', highlight: true },
     { href: '/blog', label: 'Blog' },
     { href: '/work', label: 'Work' },
     { href: '/contact', label: 'Contact' }
@@ -40,7 +41,12 @@ export default function Header(){
           </div>
 
           {nav.map(item => (
-            <Link key={item.href} href={item.href} className="text-sm text-gray-200/90 hover:text-white">
+            <Link key={item.href} href={item.href} className={`text-sm transition-all ${
+              item.highlight 
+                ? 'text-orange-400 hover:text-orange-300 font-medium flex items-center gap-1' 
+                : 'text-gray-200/90 hover:text-white'
+            }`}>
+              {item.highlight && <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />}
               {item.label}
             </Link>
           ))}
@@ -66,8 +72,17 @@ export default function Header(){
 
             <nav className="flex flex-col gap-4">
               {nav.map(item => (
-                <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="text-lg py-2 border-b border-white/10">
+                <Link 
+                  key={item.href} 
+                  href={item.href} 
+                  onClick={() => setOpen(false)} 
+                  className={`text-lg py-2 border-b border-white/10 flex items-center gap-2 ${
+                    item.highlight ? 'text-orange-400' : ''
+                  }`}
+                >
+                  {item.highlight && <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />}
                   {item.label}
+                  {item.highlight && <span className="text-xs bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded-full ml-auto">New</span>}
                 </Link>
               ))}
             </nav>
