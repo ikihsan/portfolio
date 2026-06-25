@@ -2,8 +2,10 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { V2_URL } from '../data/links'
+import ActiveVisitors from './ActiveVisitors'
 
-// Header: responsive header with logo, nav links and social icons.
+// Header: responsive header with logo, nav links, social icons, and a creative v2 button.
 export default function Header(){
   const [open, setOpen] = useState(false)
 
@@ -19,6 +21,7 @@ export default function Header(){
   return (
     <header className="fixed z-30 top-0 left-0 right-0 backdrop-blur-md bg-black/50 border-b border-white/6">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        {/* Logo */}
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-3">
             <img src="/logo.svg" alt="Logo" className="w-9 h-9" />
@@ -26,7 +29,11 @@ export default function Header(){
           </Link>
         </div>
 
+        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6">
+          {/* Active Visitors */}
+          <ActiveVisitors />
+          {/* Social Icons */}
           <div className="flex items-center gap-4">
             <a aria-label="GitHub" href="https://github.com/ikihsan" className="opacity-80 hover:opacity-100">{/* GitHub SVG */}
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-gray-200">
@@ -40,6 +47,7 @@ export default function Header(){
             </a>
           </div>
 
+          {/* Nav Links */}
           {nav.map(item => (
             <Link key={item.href} href={item.href} className={`text-sm transition-all ${
               item.highlight 
@@ -50,41 +58,158 @@ export default function Header(){
               {item.label}
             </Link>
           ))}
+
+          {/* —— Creative v2 Button —— */}
+          <motion.a
+            href={V2_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold tracking-wider uppercase rounded-full border border-neon/50 text-neon overflow-hidden"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {/* Background shimmer on hover */}
+            <motion.span
+              className="absolute inset-0 bg-neon/10"
+              initial={{ x: '-100%' }}
+              whileHover={{ x: 0 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+            />
+            {/* Sparkle icon */}
+            <svg className="relative z-10 w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L13.09 8.91L20 10L13.09 11.09L12 18L10.91 11.09L4 10L10.91 8.91L12 2Z" fill="currentColor" />
+            </svg>
+            <span className="relative z-10">v2</span>
+            {/* Arrow icon */}
+            <svg className="relative z-10 w-3 h-3 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            {/* Glow ring */}
+            <span className="absolute inset-0 rounded-full ring-1 ring-neon/30 group-hover:ring-neon/70 transition-all duration-300" />
+          </motion.a>
+          {/* —— End v2 Button —— */}
         </nav>
 
+        {/* Mobile Hamburger / X toggle */}
         <div className="md:hidden">
-          <button aria-label="Toggle menu" onClick={() => setOpen(!open)} className="p-2">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#fff" strokeWidth="1.2" strokeLinecap="round"/></svg>
+          <button
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            onClick={() => setOpen(!open)}
+            className="relative z-50 p-2"
+          >
+            <AnimatePresence mode="wait">
+              {open ? (
+                <motion.svg
+                  key="close"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <path d="M6 6l12 12M18 6l-12 12" stroke="#fff" strokeWidth="1.2" strokeLinecap="round" />
+                </motion.svg>
+              ) : (
+                <motion.svg
+                  key="menu"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <path d="M3 6h18M3 12h18M3 18h18" stroke="#fff" strokeWidth="1.2" strokeLinecap="round" />
+                </motion.svg>
+              )}
+            </AnimatePresence>
           </button>
         </div>
       </div>
 
-      {/* Mobile overlay menu */}
+      {/* Mobile overlay backdrop */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            key="mobile-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-16 left-8 right-8 z-40 bg-black/90 rounded-lg p-6 shadow-lg"
-          >
+            className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden"
+            onClick={() => setOpen(false)}
+          />
+        )}
+      </AnimatePresence>
 
-            <nav className="flex flex-col gap-4">
-              {nav.map(item => (
-                <Link 
-                  key={item.href} 
-                  href={item.href} 
-                  onClick={() => setOpen(false)} 
-                  className={`text-lg py-2 border-b border-white/10 flex items-center gap-2 ${
-                    item.highlight ? 'text-orange-400' : ''
-                  }`}
+      {/* Mobile overlay menu — full-width panel sliding from top */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -16, scaleY: 0.95 }}
+            animate={{ opacity: 1, y: 0, scaleY: 1 }}
+            exit={{ opacity: 0, y: -16, scaleY: 0.95 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }} // smooth spring-like easing
+            className="fixed top-[58px] left-0 right-0 z-40 mx-4 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/50 md:hidden"
+          >
+            <nav className="flex flex-col px-5 py-5">
+              {nav.map((item, i) => (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -12 }}
+                  transition={{ duration: 0.2, delay: i * 0.04 }}
                 >
-                  {item.highlight && <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />}
-                  {item.label}
-                  {item.highlight && <span className="text-xs bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded-full ml-auto">New</span>}
-                </Link>
+                  <Link 
+                    href={item.href} 
+                    onClick={() => setOpen(false)} 
+                    className={`flex items-center gap-3 py-3.5 border-b border-white/6 ${
+                      item.highlight ? 'text-orange-400' : 'text-gray-200'
+                    }`}
+                  >
+                    {item.highlight && (
+                      <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse shrink-0" />
+                    )}
+                    <span className="font-medium">{item.label}</span>
+                    {item.highlight && (
+                      <span className="text-[10px] bg-orange-500/15 text-orange-400 px-2 py-0.5 rounded-full ml-auto font-semibold">
+                        New
+                      </span>
+                    )}
+                  </Link>
+                </motion.div>
               ))}
+
+              {/* Mobile v2 button */}
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 8 }}
+                transition={{ duration: 0.2, delay: 0.2 }}
+              >
+                <a
+                  href={V2_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="mt-4 flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl border border-neon/40 text-neon font-semibold text-sm tracking-wider uppercase hover:bg-neon/10 transition-all duration-200"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L13.09 8.91L20 10L13.09 11.09L12 18L10.91 11.09L4 10L10.91 8.91L12 2Z" fill="currentColor" />
+                  </svg>
+                  Visit v2
+                  <svg className="w-3.5 h-3.5 opacity-60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              </motion.div>
             </nav>
           </motion.div>
         )}

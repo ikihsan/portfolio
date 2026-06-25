@@ -4,6 +4,7 @@ import GradientBackground from '../components/GradientBackground'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import PopupQuote from '../components/PopupQuote'
+import AnalyticsTracker from '../components/AnalyticsTracker'
 import { Analytics } from "@vercel/analytics/next"
 
 const poppins = Poppins({
@@ -35,6 +36,7 @@ export default function RootLayout({ children }) {
           {children}
           <Analytics />
         </main>
+        <AnalyticsTracker />
         <Footer />
       </body>
     </html>
