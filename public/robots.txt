@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://ikihsan.me
+Host: https://ihsanik.tech
 
 # Sitemaps
-Sitemap: https://ikihsan.me/sitemap.xml
+Sitemap: https://ihsanik.tech/sitemap.xml

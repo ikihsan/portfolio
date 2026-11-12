@@ -75,7 +75,7 @@ export default function Footer(){
     <>
       <footer className="relative z-10 border-t border-white/6 mt-12 py-8">
         <div className="max-w-6xl mx-auto px-4 text-center text-sm text-gray-400">
-          <div>© {new Date().getFullYear()} ikihsan.me</div>
+          <div>© {new Date().getFullYear()} ihsanik.tech</div>
           <div className="mt-2">
             <button onClick={handlePrivacyClick} className="underline hover:text-white">Privacy</button>
           </div>

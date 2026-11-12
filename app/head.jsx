@@ -11,7 +11,7 @@ export default function Head() {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link rel="icon" href="/favicon.ico" />
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="ikihsan.me" />
+      <meta property="og:site_name" content="ihsanik.tech" />
       <meta property="og:image" content="/og-image.png" />
     </>
   )

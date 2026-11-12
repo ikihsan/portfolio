@@ -225,7 +225,7 @@ export default function AnalyticsPage() {
               Analytics
             </motion.h1>
             <p className="text-sm text-gray-500 mt-1">
-              Public real-time dashboard for ikihsan.me
+              Public real-time dashboard for ihsanik.tech
             </p>
           </div>
           <PeriodFilter value={period} onChange={setPeriod} />

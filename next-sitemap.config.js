@@ -1,3 +1,3 @@
 module.exports = {
-  siteUrl: 'https://ikihsan.me',
+  siteUrl: 'https://ihsanik.tech',
   generateRobotsTxt: true,}

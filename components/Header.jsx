@@ -25,7 +25,7 @@ export default function Header(){
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-3">
             <img src="/logo.svg" alt="Logo" className="w-9 h-9" />
-            <span className="font-semibold">ikihsan.me</span>
+            <span className="font-semibold">ihsanik.tech</span>
           </Link>
         </div>
 

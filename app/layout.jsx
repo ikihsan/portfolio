@@ -16,10 +16,10 @@ const poppins = Poppins({
 })
 
 export const metadata = {
-  title: 'ikihsan.me — Build with intention',
+  title: 'ihsanik.tech — Build with intention',
   description: '',
   openGraph: {
-    title: 'ikihsan.me — Build with intention',
+    title: 'ihsanik.tech — Build with intention',
     description: '',
     images: '/og-image.png'
   }
